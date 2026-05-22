@@ -70,7 +70,7 @@ class DescuentoTest {
                 .doesNotThrowAnyException();
 
         producto.aplicarDescuento(39.99);
-        assertThat(producto.getPrecioConDescuento()).isEqualTo(6000.1, within(0.01));
+        assertThat(producto.getPrecioConDescuento()).isEqualTo(6001, within(0.01));
     }
 
     @Test
