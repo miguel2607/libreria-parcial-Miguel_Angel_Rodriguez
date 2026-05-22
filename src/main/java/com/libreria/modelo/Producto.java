@@ -52,7 +52,11 @@ public class Producto {
 
     public double getPrecioFinal() {
         double precioConDescuento = getPrecioConDescuento();
-        return precioConDescuento * (1 + IVA / PORCENTAJE_DIVISOR);
+        return aplicarIVA(precioConDescuento);
+    }
+
+    private double aplicarIVA(double precio) {
+        return precio * (1 + IVA / PORCENTAJE_DIVISOR);
     }
 
     public String getNombre() {
@@ -61,5 +65,9 @@ public class Producto {
 
     public double getPrecioBase() {
         return precioBase;
+    }
+
+    public double getDescuento() {
+        return descuento;
     }
 }

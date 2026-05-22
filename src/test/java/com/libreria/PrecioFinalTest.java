@@ -24,7 +24,6 @@ class PrecioFinalTest {
 
         double precioFinal = producto.getPrecioFinal();
 
-        // 10000 * 1.19 = 11900
         assertThat(precioFinal).isEqualTo(11900);
     }
 
@@ -35,7 +34,6 @@ class PrecioFinalTest {
 
         double precioFinal = producto.getPrecioFinal();
 
-        // (10000 - 4000) * 1.19 = 6000 * 1.19 = 7140
         assertThat(precioFinal).isEqualTo(7140);
     }
 
@@ -46,14 +44,12 @@ class PrecioFinalTest {
 
         double precioFinal = producto.getPrecioFinal();
 
-        // (10000 - 2000) * 1.19 = 8000 * 1.19 = 9520
         assertThat(precioFinal).isEqualTo(9520);
     }
 
     @Test
     @DisplayName("Verificar que el precio final nunca es negativo")
     void verificarPrecioFinalNuncaNegativo() {
-        // Con precio base válido (> 0) y descuento máximo 40%, el precio nunca puede ser negativo
         Producto productoMinimo = new Producto("Item", 0.01);
         productoMinimo.aplicarDescuento(40);
 
@@ -70,7 +66,6 @@ class PrecioFinalTest {
 
         double precioFinal = productoAlto.getPrecioFinal();
 
-        // (1000000 - 150000) * 1.19 = 850000 * 1.19 = 1011500
         assertThat(precioFinal).isEqualTo(1011500);
     }
 }
