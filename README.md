@@ -67,7 +67,7 @@ debemos considerar en el diseño.
 ## Casos de Prueba
 
 | ID | Regla | Descripción | Precondición | Datos de entrada | Pasos | Resultado esperado | Tipo |
-|----|-------|-------------|--------------|------------------|-------|-------------------|------|
+|----------------------------------------------------------------------------------------|
 | CP01 | Regla 1 | Crear producto con precio válido | Ninguna | nombre="Cuaderno", precio=10000 | 1. Crear producto con nombre y precio | Producto creado exitosamente con precio=10000 | Positivo |
 | CP02 | Regla 1 | Crear producto con precio cero | Ninguna | nombre="Lápiz", precio=0 | 1. Intentar crear producto con precio=0 | Sistema rechaza con mensaje: "El precio base debe ser mayor que cero" | Negativo |
 | CP03 | Regla 1 | Crear producto con precio negativo | Ninguna | nombre="Borrador", precio=-5000 | 1. Intentar crear producto con precio negativo | Sistema rechaza con mensaje: "El precio base debe ser mayor que cero" | Negativo |
