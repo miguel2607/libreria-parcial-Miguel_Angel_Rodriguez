@@ -4,6 +4,7 @@ public class Producto {
     private static final double DESCUENTO_MINIMO = 0;
     private static final double DESCUENTO_MAXIMO = 40;
     private static final double PORCENTAJE_DIVISOR = 100.0;
+    private static final double IVA = 19.0;
 
     private final String nombre;
     private final double precioBase;
@@ -47,6 +48,11 @@ public class Producto {
     private double calcularPrecioConDescuento(double precio, double descuentoPorcentaje) {
         double montoDescuento = precio * descuentoPorcentaje / PORCENTAJE_DIVISOR;
         return precio - montoDescuento;
+    }
+
+    public double getPrecioFinal() {
+        double precioConDescuento = getPrecioConDescuento();
+        return precioConDescuento * (1 + IVA / PORCENTAJE_DIVISOR);
     }
 
     public String getNombre() {
