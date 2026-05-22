@@ -1,6 +1,10 @@
 package com.libreria.modelo;
 
 public class Producto {
+    private static final double DESCUENTO_MINIMO = 0;
+    private static final double DESCUENTO_MAXIMO = 40;
+    private static final double PORCENTAJE_DIVISOR = 100.0;
+
     private final String nombre;
     private final double precioBase;
     private double descuento;
@@ -10,7 +14,7 @@ public class Producto {
         validarPrecioBase(precioBase);
         this.nombre = nombre;
         this.precioBase = precioBase;
-        this.descuento = 0;
+        this.descuento = DESCUENTO_MINIMO;
     }
 
     private void validarNombre(String nombre) {
@@ -25,15 +29,24 @@ public class Producto {
         }
     }
 
-    public void aplicarDescuento(double descuento) {
-        if (descuento < 0 || descuento > 40) {
+    private void validarDescuento(double descuento) {
+        if (descuento < DESCUENTO_MINIMO || descuento > DESCUENTO_MAXIMO) {
             throw new IllegalArgumentException("El descuento debe estar entre 0% y 40%");
         }
+    }
+
+    public void aplicarDescuento(double descuento) {
+        validarDescuento(descuento);
         this.descuento = descuento;
     }
 
     public double getPrecioConDescuento() {
-        return precioBase - (precioBase * descuento / 100);
+        return calcularPrecioConDescuento(precioBase, descuento);
+    }
+
+    private double calcularPrecioConDescuento(double precio, double descuentoPorcentaje) {
+        double montoDescuento = precio * descuentoPorcentaje / PORCENTAJE_DIVISOR;
+        return precio - montoDescuento;
     }
 
     public String getNombre() {
